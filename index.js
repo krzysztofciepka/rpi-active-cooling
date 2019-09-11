@@ -63,11 +63,11 @@ async function controlTemp(gpio, min, max, interval) {
   return setInterval(async () => {
     const temp = parseTempOutput(await readTemp());
 
-    if (temp > parseFloat(max, 10)) {
+    if (temp > max) {
       await enableFan(fanGpio);
     }
 
-    if (temp < parseFloat(min, 10)) {
+    if (temp < min) {
       await disableFan(fanGpio);
     }
   }, interval);
