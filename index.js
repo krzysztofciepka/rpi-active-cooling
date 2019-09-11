@@ -35,16 +35,16 @@ function parseTempOutput(temp) {
 
 
 async function setupGpio(gpio) {
-  await exec(`gpio mode ${gpio} out`);
+  await exec(`gpio -g mode ${gpio} out`);
 
   return {
     enable: async () => {
       debug('enable: ', gpio);
-      await exec(`gpio write ${gpio} 1`);
+      await exec(`gpio -g write ${gpio} 1`);
     },
     disable: async () => {
       debug('disable: ', gpio);
-      await exec(`gpio write ${gpio} 0`);
+      await exec(`gpio -g write ${gpio} 0`);
     },
   };
 }

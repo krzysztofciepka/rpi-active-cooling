@@ -26,7 +26,7 @@ example
     rpiac 18 60 75
 
 
-**gpio** - GPIO pin to control the fan
+**gpio** - GPIO pin to control the fan (BCM ordering)
 
 **max** - temperature above which fan is enabled
 
