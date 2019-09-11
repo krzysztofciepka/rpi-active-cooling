@@ -6,8 +6,7 @@ Script that controls Raspberry Pi fan depending on the GPU temperature measureme
 
 Tested on Raspberry Pi 4B with Raspbian installed but it should work on any Raspberry with VideoCore GPU
 
-Requires **vcgencmd** to be available on the system.
-
+Requires **vcgencmd** and **gpio** (**wiringPi** utility) to be available on the system (should be already installed on Raspbian)
 
 
 Note: Make sure that user running the script is in the *video* group to be able to execute **vcgencmd** and *gpio* group to be able to control GPIO pins without sudo
@@ -40,3 +39,10 @@ If your fan does not have a built-in control wire you need to add a transistor s
 See the scheme below
 
 ![scheme](./scheme.png)
+
+
+## Known issues
+
+Make sure you have the latest wiringPi, otherwise GPIO control might not work on Raspberry Pi 4B
+
+http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/

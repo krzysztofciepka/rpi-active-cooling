@@ -1,5 +1,4 @@
 const { exec } = require('child_process');
-const rpiGpio = require('rpi-gpio').promise;
 const debug = require('debug')('rpi-active-cooling');
 
 async function execCmd(cmd) {
@@ -34,17 +33,18 @@ function parseTempOutput(temp) {
   return parseFloat(matches[0], 10);
 }
 
+
 async function setupGpio(gpio) {
-  await rpiGpio.setup(parseInt(gpio, 10), rpiGpio.DIR_OUT);
+  await exec(`gpio mode ${gpio} out`);
 
   return {
     enable: async () => {
       debug('enable: ', gpio);
-      await rpiGpio.write(parseInt(gpio, 10), true);
+      await exec(`gpio write ${gpio} 1`);
     },
     disable: async () => {
       debug('disable: ', gpio);
-      await rpiGpio.write(parseInt(gpio, 10), false);
+      await exec(`gpio write ${gpio} 0`);
     },
   };
 }
