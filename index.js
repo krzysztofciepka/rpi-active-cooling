@@ -35,7 +35,7 @@ function parseTempOutput(temp) {
 }
 
 async function setupGpio(gpio) {
-  await rpiGpio.setup(gpio, gpio.DIR_OUT);
+  await rpiGpio.setup(parseInt(gpio, 10), rpiGpio.DIR_OUT);
 
   return {
     enable: async () => {
