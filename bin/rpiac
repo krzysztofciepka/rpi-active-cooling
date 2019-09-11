@@ -11,7 +11,7 @@ if (!gpio || !min || !max || parseFloat(min, 10) > parseFloat(max, 10)) {
   process.exit(1);
 }
 
-controlTemp(gpio, parseFloat(min, 10), parseFloat(max, 10), 30000)
+controlTemp(gpio, parseFloat(min, 10), parseFloat(max, 10), 10000)
   .then(() => {
     debug('Temperature control started');
   }).catch((err) => {

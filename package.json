@@ -1,6 +1,6 @@
 {
   "name": "rpi-active-cooling",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Temperature based external fan control for Raspberry Pi",
   "main": "index.js",
   "bin": {
