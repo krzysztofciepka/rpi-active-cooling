@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+const debug = require('debug')('rpi-active-cooling');
+const { controlTemp } = require('../index');
+
+const args = process.argv.slice(2);
+const [gpio, min, max] = args;
+
+controlTemp(gpio, min, max, 1000)
+  .then(() => {
+    debug('Temperature control started');
+  }).catch((err) => {
+    debug(err);
+  });
