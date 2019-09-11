@@ -23,14 +23,14 @@ Note: Make sure that user running the script is in the *video* group to be able 
 
 example
 
-    rpiac 18 60 75
+    rpiac 18 55 70
 
 
 **gpio** - GPIO pin to control the fan (BCM ordering)
 
-**max** - temperature above which fan is enabled
+**max** - temperature ('C) above which fan is enabled
 
-**min** - temperature below which fan is disabled
+**min** - temperature ('C) below which fan is disabled
 
 ## Required electronic adjustments
 
@@ -40,6 +40,26 @@ See the scheme below
 
 ![scheme](./scheme.png)
 
+## Running as a systemd service
+
+Create a service unit file
+
+    sudo nano /etc/systemd/system/rpiac.service
+
+Paste content replacing user *pi* with your own
+
+    Description=Raspberry Pi Active Cooling
+    After=network.target
+    [Service]
+    ExecStart=rpiac 18 55 70
+    User=pi
+    [Install]
+    WantedBy=multi-user.target
+
+Then enable and start service
+
+    sudo systemctl enable rpiac
+    sudo systemctl start rpiac
 
 ## Known issues
 
